@@ -13,7 +13,7 @@ class SubjectCell: UITableViewCell {
     @IBOutlet weak var subjectImage: UIImageView!
 }
 
-class SubjectDataAndDelegate : NSObject, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     let subjects : [String] = [
         "Mathematics", "Marvel Super Heroes", "Science"
     ]
@@ -33,11 +33,10 @@ class SubjectDataAndDelegate : NSObject, UITableViewDataSource, UITableViewDeleg
         cell.descriptionLabel?.text = descriptions[indexPath.row]
         return cell
     }
-}
-
-class ViewController: UIViewController {
     
-    var subjectDataAndDelegate = SubjectDataAndDelegate()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ToQuestion", sender: self)
+    }
 
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var subjectTable: UITableView!
@@ -47,9 +46,10 @@ class ViewController: UIViewController {
         
         subjectTable.rowHeight = 100
         
-        subjectTable.dataSource = subjectDataAndDelegate
-        subjectTable.delegate = subjectDataAndDelegate
+        subjectTable.dataSource = self
+        subjectTable.delegate = self
     }
+    
 
     @IBAction func pressSettings(_ sender: Any) {
         let alertController = UIAlertController(title: "Settings", message: "Settings go here.", preferredStyle: .alert)
@@ -58,5 +58,25 @@ class ViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is QuestionViewController {
+            let vc = segue.destination as? QuestionViewController
+            vc?.questions = ["This is example question 1?", "This is an example question 2?"]
+            vc?.answers = [["Incorrect Answer", "Correct Answer", "Incorrect Answer", "Incorrect Answer"], ["Incorrect Answer", "Correct Answer", "Incorrect Answer", "Incorrect Answer"]]
+            vc?.currentQuestion = 0
+            vc?.currentScore = 0
+        }
+    }
+    
 }
+
+//class quizSet {
+//    var Questions: [String] = []
+//    var Answers: [[String]] = []
+//
+//    init (Questions: [String], Answers: [[String]]) {
+//        self.Questions = Questions
+//        self.Answers = Answers
+//    }
+//}
 
