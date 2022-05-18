@@ -14,9 +14,11 @@ class AnswerCell: UITableViewCell {
 class QuestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var selectedAnswerText: UILabel!
+    @IBOutlet weak var questionText: UILabel!
     
     var questions: [String] = []
     var answers : [[String]] = []
+    var correctAnswers: [String] = []
     var currentQuestion: Int = 0
     var currentScore: Int = 0
     
@@ -47,6 +49,7 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
         answerTable.delegate = self
         selectedAnswerText.isHidden = true
         nextButton.isEnabled = false
+        questionText.text = questions[currentQuestion]
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
@@ -56,12 +59,13 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is AnswerViewController {
             let vc = segue.destination as? AnswerViewController
-            vc?.correctAnswer = "Correct Answer"
+            let correctAnswerIndex = Int(correctAnswers[currentQuestion])! - 1
+            vc?.correctAnswer = answers[currentQuestion][correctAnswerIndex]
             vc?.yourAnswer = selectedAnswerText.text!
             vc?.currentScore = currentScore
-            
-            vc?.questions = ["This is example question 1?", "This is an example question 2?"]
-            vc?.answers = [["Incorrect Answer", "Correct Answer", "Incorrect Answer", "Incorrect Answer"], ["Incorrect Answer", "Correct Answer", "Incorrect Answer", "Incorrect Answer"]]
+            vc?.correctAnswers = correctAnswers
+            vc?.questions = questions
+            vc?.answers = answers
             vc?.currentQuestion = currentQuestion
         }
     }

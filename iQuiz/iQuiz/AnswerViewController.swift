@@ -13,6 +13,7 @@ class AnswerViewController: UIViewController {
     @IBOutlet weak var yourAnswerText: UILabel!
     
     var correctAnswer: String = ""
+    var correctAnswers: [String] = []
     var yourAnswer: String = ""
     var questions: [String] = []
     var answers : [[String]] = []
@@ -52,6 +53,7 @@ class AnswerViewController: UIViewController {
             vc?.answers = answers
             vc?.currentQuestion = currentQuestion
             vc?.currentScore = currentScore
+            vc?.correctAnswers = correctAnswers
         }
         
         if segue.destination is FinishedViewController {

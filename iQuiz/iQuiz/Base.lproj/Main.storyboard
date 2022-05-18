@@ -8,6 +8,63 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="SYF-2M-WYh">
+            <objects>
+                <viewController id="D1H-4h-iTh" customClass="SettingsViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uCs-3G-dgh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUF-li-88e">
+                                <rect key="frame" x="159.5" y="92" width="95" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VAt-GO-rCC">
+                                <rect key="frame" x="20" y="271" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xW7-C6-FlX">
+                                <rect key="frame" x="20" y="242" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3I-n8-u64">
+                                <rect key="frame" x="158" y="356" width="98" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Check Now"/>
+                                <connections>
+                                    <action selector="checkButtonPressed:" destination="D1H-4h-iTh" eventType="touchUpInside" id="O1f-GX-k3S"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4qe-mu-39g"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OUF-li-88e" firstAttribute="centerX" secondItem="4qe-mu-39g" secondAttribute="centerX" id="3S5-1z-HOi"/>
+                            <constraint firstItem="VAt-GO-rCC" firstAttribute="top" secondItem="xW7-C6-FlX" secondAttribute="bottom" constant="8" symbolic="YES" id="5aG-Ea-eTU"/>
+                            <constraint firstItem="VAt-GO-rCC" firstAttribute="top" secondItem="4qe-mu-39g" secondAttribute="top" constant="227" id="A7c-P3-7Gf"/>
+                            <constraint firstItem="xW7-C6-FlX" firstAttribute="leading" secondItem="4qe-mu-39g" secondAttribute="leading" constant="20" id="EQY-ZB-108"/>
+                            <constraint firstItem="VAt-GO-rCC" firstAttribute="centerX" secondItem="4qe-mu-39g" secondAttribute="centerX" id="FYM-Bx-oIX"/>
+                            <constraint firstItem="VAt-GO-rCC" firstAttribute="leading" secondItem="4qe-mu-39g" secondAttribute="leading" constant="20" id="LLp-Qf-2t1"/>
+                            <constraint firstItem="E3I-n8-u64" firstAttribute="centerX" secondItem="4qe-mu-39g" secondAttribute="centerX" id="ZI8-Bd-6Z6"/>
+                            <constraint firstItem="OUF-li-88e" firstAttribute="top" secondItem="4qe-mu-39g" secondAttribute="top" constant="48" id="kcq-rz-BTG"/>
+                            <constraint firstItem="E3I-n8-u64" firstAttribute="top" secondItem="4qe-mu-39g" secondAttribute="top" constant="312" id="uxr-2Q-9HB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="urlInput" destination="VAt-GO-rCC" id="AOW-Vl-coQ"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="ToHome" modalPresentationStyle="fullScreen" id="y1b-hT-0zY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CCt-WA-O1O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1088.4057971014493" y="83.705357142857139"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -30,7 +87,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjY-KS-F9N">
                                                     <rect key="frame" x="71" y="49" width="303" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -61,6 +118,9 @@
                                     <barButtonItem title="Settings" id="aTj-Je-j4y">
                                         <connections>
                                             <action selector="pressSettings:" destination="BYZ-38-t0r" id="D2e-59-9AG"/>
+                                            <segue destination="D1H-4h-iTh" kind="popoverPresentation" identifier="ToSettings" popoverAnchorBarButtonItem="aTj-Je-j4y" id="vuq-tW-rIe">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -82,6 +142,7 @@
                     <navigationItem key="navigationItem" id="ocY-vq-NBJ"/>
                     <connections>
                         <outlet property="subjectTable" destination="RAy-P1-tbc" id="h0O-Nh-8jk"/>
+                        <outlet property="tableView" destination="RAy-P1-tbc" id="Pje-UG-uRv"/>
                         <outlet property="toolbar" destination="FU9-cZ-lkF" id="l15-5U-DHV"/>
                         <segue destination="Koc-vd-h6P" kind="presentation" identifier="ToQuestion" modalPresentationStyle="fullScreen" id="Ptt-fw-L83"/>
                     </connections>
@@ -120,9 +181,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example answer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7C-LK-U9n">
-                                                    <rect key="frame" x="16" y="11" width="304" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="358" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -176,6 +237,7 @@
                     <connections>
                         <outlet property="answerTable" destination="4sm-2X-Fd0" id="sGZ-RI-rgw"/>
                         <outlet property="nextButton" destination="aiQ-2d-ywe" id="CNU-kc-dp4"/>
+                        <outlet property="questionText" destination="jqf-xZ-eYI" id="tVf-dv-dM1"/>
                         <outlet property="selectedAnswerText" destination="Eyi-er-tn5" id="ivk-cX-lTJ"/>
                         <segue destination="nag-v3-Oqx" kind="modal" identifier="ToAnswer" modalPresentationStyle="fullScreen" id="J46-Rf-lPg"/>
                     </connections>
@@ -313,7 +375,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6r0-3C-Apc"/>
+        <segue reference="Ptt-fw-L83"/>
+        <segue reference="y1b-hT-0zY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="folder.fill" catalog="system" width="128" height="97"/>
